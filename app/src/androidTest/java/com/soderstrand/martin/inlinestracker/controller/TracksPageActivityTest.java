@@ -2,7 +2,6 @@ package com.soderstrand.martin.inlinestracker.controller;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.soderstrand.martin.inlinestracker.R;
 
@@ -29,7 +28,7 @@ public class TracksPageActivityTest extends ActivityInstrumentationTestCase2<Tra
 
     @Test
     public void testListViewNotNull(){
-        ListView tracks = (ListView) tracksPageActivity.findViewById(R.id.tracks);
+        ListView tracks = (ListView) tracksPageActivity.findViewById(R.id.tracks_button);
         assertNotNull(tracks);
     }
 }

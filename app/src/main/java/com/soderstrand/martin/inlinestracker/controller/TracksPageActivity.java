@@ -1,8 +1,5 @@
 package com.soderstrand.martin.inlinestracker.controller;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
@@ -15,7 +12,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.soderstrand.martin.inlinestracker.R;
-import com.soderstrand.martin.inlinestracker.model.GestureListener;
+import com.soderstrand.martin.inlinestracker.model.listener.GestureListener;
 import com.soderstrand.martin.inlinestracker.model.Position;
 import com.soderstrand.martin.inlinestracker.model.TracksReceiver;
 
@@ -37,9 +34,9 @@ public class TracksPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tracks_page);
+        setContentView(R.layout.activity_tracks);
         final TracksReceiver tracks = new TracksReceiver(this);
-        martinsListView = (ListView) findViewById(R.id.tracks);
+        martinsListView = (ListView) findViewById(R.id.tracks_button);
 
         if(!tracks.getDates()[0].equals("")){
             ListAdapter adapter = new CustomAdapter(this, tracks.getDates(), tracks.getDistance(), tracks.getAvgSpeed(), tracks.getMaxSpeed(), tracks.getTime());

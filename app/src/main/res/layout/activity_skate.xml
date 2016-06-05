@@ -1,0 +1,130 @@
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:focusableInTouchMode="false"
+    android:id="@+id/main_container">
+
+
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map_button"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.StartSkatingActivity"
+    android:layout_alignParentBottom="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/tracks_control_panel_design"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inner_top_container"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/inner_left_container"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Distance:"
+                    android:id="@+id/distanceText"
+                    android:textSize="18sp"
+                    android:textIsSelectable="false"
+                    android:layout_alignTop="@+id/time_value"
+                    android:layout_alignStart="@+id/delete_button" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00km"
+                    android:id="@+id/distance_value"
+                    android:textSize="18sp"
+                    android:textIsSelectable="false"
+                    android:layout_alignTop="@+id/distanceText"
+                    android:layout_toEndOf="@+id/distanceText"
+                    android:layout_marginLeft="3dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/inner_right_container"
+                android:gravity="center_horizontal"
+                android:paddingStart="-20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time:"
+                    android:id="@+id/timetext"
+                    android:textSize="18sp"
+                    android:textIsSelectable="false"
+                    android:layout_above="@+id/save_button"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:id="@+id/time_value"
+                    android:layout_marginLeft="3dp"
+                    android:textSize="18sp"
+                    android:textIsSelectable="false"
+                    android:layout_alignTop="@+id/timetext"
+                    android:layout_toEndOf="@+id/timetext" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inner_bottom_container"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Save Track"
+                android:id="@+id/save_button"
+                android:background="@drawable/save_button_design"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:gravity="center_vertical"
+                android:onClick="onSavePressed"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.soderstrand.martin.inlinestracker.model;
+package com.soderstrand.martin.inlinestracker.model.listener;
 
 import android.Manifest;
 import android.content.Context;
@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.soderstrand.martin.inlinestracker.model.Map;
+import com.soderstrand.martin.inlinestracker.model.Track;
 
 /**
  * @author Martin Söderstrand

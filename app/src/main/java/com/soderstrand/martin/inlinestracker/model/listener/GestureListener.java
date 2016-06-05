@@ -1,4 +1,4 @@
-package com.soderstrand.martin.inlinestracker.model;
+package com.soderstrand.martin.inlinestracker.model.listener;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,7 @@ import com.soderstrand.martin.inlinestracker.R;
 import com.soderstrand.martin.inlinestracker.controller.FrontPageActivity;
 import com.soderstrand.martin.inlinestracker.controller.MapActivity;
 import com.soderstrand.martin.inlinestracker.controller.TracksPageActivity;
+import com.soderstrand.martin.inlinestracker.model.Position;
 
 /**
  * @author Martin Söderstrand

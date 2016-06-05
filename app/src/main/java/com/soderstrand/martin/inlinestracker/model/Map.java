@@ -86,7 +86,7 @@ public class Map implements OnMapReadyCallback {
      * Initialize what sort of map you want.
      */
     public void initializeMap() {
-        this.mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        this.mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }
 
     public void alertNoGps(){

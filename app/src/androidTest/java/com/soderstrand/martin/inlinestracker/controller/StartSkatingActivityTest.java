@@ -35,11 +35,11 @@ public class StartSkatingActivityTest extends ActivityInstrumentationTestCase2<S
     }
     @Test
     public void testTextViewNotNull(){
-        TextView save = (TextView) startSkatingActivity.findViewById(R.id.save);
-        TextView delete = (TextView) startSkatingActivity.findViewById(R.id.delete);
+        TextView save = (TextView) startSkatingActivity.findViewById(R.id.save_button);
+        TextView delete = (TextView) startSkatingActivity.findViewById(R.id.delete_button);
         TextView distance = (TextView) startSkatingActivity.findViewById(R.id.distance);
         TextView distanceText = (TextView) startSkatingActivity.findViewById(R.id.distanceText);
-        TextView time = (TextView) startSkatingActivity.findViewById(R.id.time);
+        TextView time = (TextView) startSkatingActivity.findViewById(R.id.time_value);
         TextView timeText = (TextView) startSkatingActivity.findViewById(R.id.timetext);
         assertNotNull(save);
         assertNotNull(delete);

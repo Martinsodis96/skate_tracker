@@ -6,8 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.GestureDetectorCompat;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,12 +14,9 @@ import android.widget.Spinner;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.soderstrand.martin.inlinestracker.model.GestureListener;
 import com.soderstrand.martin.inlinestracker.model.Map;
-import com.soderstrand.martin.inlinestracker.model.MyLocationListener;
+import com.soderstrand.martin.inlinestracker.model.listener.MyLocationListener;
 import com.soderstrand.martin.inlinestracker.R;
-import com.soderstrand.martin.inlinestracker.model.Position;
-import com.soderstrand.martin.inlinestracker.model.Track;
 
 import java.util.regex.Pattern;
 
@@ -36,12 +31,11 @@ public class MapActivity extends FragmentActivity implements AdapterView.OnItemS
 
     private Map map;
     private MyLocationListener locationListener;
-    private Spinner spinner;
     private String activity = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.map_page);
+        setContentView(R.layout.activity_map);
         this.map = new Map(this, true);
         this.locationListener = new MyLocationListener(this, map, false);
 
@@ -74,12 +68,9 @@ public class MapActivity extends FragmentActivity implements AdapterView.OnItemS
         locationListener.initializeLocationManager();
 
         //Spinner
-        spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.planets_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -119,7 +110,7 @@ public class MapActivity extends FragmentActivity implements AdapterView.OnItemS
         //Set the map type depending on what you choose in the spinner.
         switch (position){
             case 0:{
-                map.getMap().setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                map.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
                 break;
             }
             case 1:{

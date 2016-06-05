@@ -1,4 +1,4 @@
-package com.soderstrand.martin.inlinestracker.model;
+package com.soderstrand.martin.inlinestracker.model.listener;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -7,6 +7,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.soderstrand.martin.inlinestracker.model.Map;
+import com.soderstrand.martin.inlinestracker.model.Track;
 
 /**
  * @author Martin Söderstrand

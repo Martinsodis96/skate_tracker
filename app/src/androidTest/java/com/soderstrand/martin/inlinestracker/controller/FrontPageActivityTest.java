@@ -29,11 +29,11 @@ public class FrontPageActivityTest extends ActivityInstrumentationTestCase2<Fron
 
     @Test
     public void testTextViewNotNull(){
-        TextView map = (TextView) frontPageActivity.findViewById(R.id.map);
-        TextView custom = (TextView) frontPageActivity.findViewById(R.id.custom);
-        TextView startSkating = (TextView) frontPageActivity.findViewById(R.id.startSkating);
-        TextView profile = (TextView) frontPageActivity.findViewById(R.id.profile);
-        TextView tracks = (TextView) frontPageActivity.findViewById(R.id.tracks);
+        TextView map = (TextView) frontPageActivity.findViewById(R.id.map_button);
+        TextView custom = (TextView) frontPageActivity.findViewById(R.id.custom_button);
+        TextView startSkating = (TextView) frontPageActivity.findViewById(R.id.start_skating_button);
+        TextView profile = (TextView) frontPageActivity.findViewById(R.id.profile_button);
+        TextView tracks = (TextView) frontPageActivity.findViewById(R.id.tracks_button);
         assertNotNull(map);
         assertNotNull(custom);
         assertNotNull(startSkating);

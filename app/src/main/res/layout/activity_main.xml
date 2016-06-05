@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#efeeee"
+    android:orientation="vertical"
+    android:id="@+id/main_container">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="9"
+        android:layout_marginBottom="15dp"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:id="@+id/top_container">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:id="@+id/top_button_container">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/tracks"
+                android:id="@+id/tracks_button"
+                android:background="@drawable/front_page_design"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:textSize="30sp"
+                android:textColor="#ffffff"
+                android:onClick="onTracksClicked"
+                android:layout_weight="1"
+                android:layout_marginRight="7.5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/map"
+                android:id="@+id/map_button"
+                android:background="@drawable/front_page_design"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textColor="#ffffff"
+                android:onClick="onMapClicked"
+                android:layout_weight="1"
+                android:layout_marginLeft="7.5dp"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:id="@+id/bottom_button_container">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/settings"
+                android:id="@+id/custom_button"
+                android:background="@drawable/front_page_design"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:textSize="30sp"
+                android:textColor="#ffffff"
+                android:layout_marginRight="7.5dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/profile"
+                android:id="@+id/profile_button"
+                android:background="@drawable/front_page_design"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:textSize="30sp"
+                android:textColor="#ffffff"
+                android:layout_marginLeft="7.5dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:id="@+id/buttom_container"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/start_skating"
+            android:id="@+id/start_skating_button"
+            android:background="@drawable/save_button_design"
+            android:textAlignment="center"
+            android:gravity="center_vertical"
+            android:textSize="33sp"
+            android:textColor="#ffffff"
+            android:onClick="onStartClicked"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp" />
+    </LinearLayout>
+</LinearLayout>

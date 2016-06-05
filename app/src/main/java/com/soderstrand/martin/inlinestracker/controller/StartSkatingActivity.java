@@ -3,7 +3,6 @@ package com.soderstrand.martin.inlinestracker.controller;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.SensorManager;
 import android.support.v4.app.ActivityCompat;
@@ -15,9 +14,9 @@ import android.widget.TextView;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.soderstrand.martin.inlinestracker.model.DataBaseHandler;
 import com.soderstrand.martin.inlinestracker.model.Map;
-import com.soderstrand.martin.inlinestracker.model.MyLocationListener;
+import com.soderstrand.martin.inlinestracker.model.listener.MyLocationListener;
 import com.soderstrand.martin.inlinestracker.R;
-import com.soderstrand.martin.inlinestracker.model.SensorListener;
+import com.soderstrand.martin.inlinestracker.model.listener.SensorListener;
 import com.soderstrand.martin.inlinestracker.model.Track;
 
 import java.util.Timer;
@@ -43,7 +42,7 @@ public class StartSkatingActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_skate);
         map = new Map(this, false);
         track = new Track();
         locationListener = new MyLocationListener(this, track, map, true);
@@ -51,13 +50,13 @@ public class StartSkatingActivity extends FragmentActivity {
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.map_button);
         mapFragment.getMapAsync(map);
         timer();
 
         //initialize
-        time = (TextView) findViewById(R.id.time);
-        distance = (TextView) findViewById(R.id.distance);
+        time = (TextView) findViewById(R.id.time_value);
+        distance = (TextView) findViewById(R.id.distance_value);
         db = new DataBaseHandler(this);
 
         locationListener.initializeLocationManager();

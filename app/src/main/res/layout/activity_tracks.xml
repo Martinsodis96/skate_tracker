@@ -6,7 +6,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tracks"
+        android:id="@+id/tracks_button"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_centerHorizontal="true"
@@ -15,7 +15,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="15dp"
         android:background="#efeeee"
-        android:divider="#efeeee" />
+        android:scrollbars="none"
+        android:divider="#efeeee"
+        android:smoothScrollbar="false" />
 
     <ImageView
         android:layout_width="50dp"
@@ -24,8 +26,8 @@
         android:src="@drawable/arrow_right"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:onClick="onBackTracksClicked" />
+        android:layout_marginBottom="30dp"
+        android:onClick="onBackTracksClicked"
+        android:layout_marginRight="10dp" />
 
 </RelativeLayout>

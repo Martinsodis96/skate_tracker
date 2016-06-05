@@ -23,7 +23,7 @@ class CustomAdapter extends ArrayAdapter<String> {
     private final String[] maxSpeed;
     private final String[] time;
     public CustomAdapter(Context context, String[] date, String[] distance, String[] avgSpeed, String[] maxSpeed, String[] time) {
-        super(context, R.layout.custom_row, date);
+        super(context, R.layout.activity_custom_row, date);
         this.distance = distance;
         this.avgSpeed = avgSpeed;
         this.maxSpeed = maxSpeed;
@@ -33,7 +33,7 @@ class CustomAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View customView = inflater.inflate(R.layout.custom_row, parent, false);
+        View customView = inflater.inflate(R.layout.activity_custom_row, parent, false);
 
         //Get single values for each row
         String singleDate = getItem(position);
@@ -56,10 +56,10 @@ class CustomAdapter extends ArrayAdapter<String> {
 
         //Initialize
         TextView header = (TextView) customView.findViewById(R.id.date);
-        TextView distance = (TextView) customView.findViewById(R.id.distance);
-        TextView avgSpeed = (TextView) customView.findViewById(R.id.avgSpeed);
-        TextView maxSpeed = (TextView) customView.findViewById(R.id.maxSpeed);
-        TextView time = (TextView) customView.findViewById(R.id.time);
+        TextView distance = (TextView) customView.findViewById(R.id.distance_value);
+        TextView avgSpeed = (TextView) customView.findViewById(R.id.avg_speed_value);
+        TextView maxSpeed = (TextView) customView.findViewById(R.id.max_speed_value);
+        TextView time = (TextView) customView.findViewById(R.id.time_value);
 
         //Set Text
         header.setText(singleDate);

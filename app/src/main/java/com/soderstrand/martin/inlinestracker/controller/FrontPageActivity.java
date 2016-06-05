@@ -1,18 +1,14 @@
 package com.soderstrand.martin.inlinestracker.controller;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.soderstrand.martin.inlinestracker.R;
-import com.soderstrand.martin.inlinestracker.model.GestureListener;
+import com.soderstrand.martin.inlinestracker.model.listener.GestureListener;
 import com.soderstrand.martin.inlinestracker.model.Position;
 
 /**
@@ -29,7 +25,7 @@ public class FrontPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.front_page);
+        setContentView(R.layout.activity_main);
 
         //For swipe detection.
         gestureDetectorCompat = new GestureDetectorCompat(this, new GestureListener(this, Position.FRONTPAGE));
