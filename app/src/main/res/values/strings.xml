@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">InlinesTracker</string>
+    <string name="title_activity_maps">Skate Tracker</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+
+    <string-array name="planets_array">
+        <item>Satellite</item>
+        <item>Normal</item>
+        <item>Hybrid</item>
+        <item>Terrain</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@drawable/list_items_design"
+    android:elevation="2dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Avg speed:"
+        android:id="@+id/textView10"
+        android:textSize="18dp"
+        android:layout_alignTop="@+id/textView11"
+        android:layout_toEndOf="@+id/date"
+        android:layout_marginLeft="-20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="2016-02/17 16:45"
+        android:id="@+id/date"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:textSize="21dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Time:"
+        android:id="@+id/textView4"
+        android:layout_marginLeft="10dp"
+        android:textSize="18dp"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Distance:"
+        android:id="@+id/textView11"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/date"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Max Speed:"
+        android:id="@+id/textView12"
+        android:textSize="18dp"
+        android:layout_below="@+id/textView10"
+        android:layout_alignStart="@+id/textView10"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="test"
+        android:id="@+id/time"
+        android:layout_marginLeft="3dp"
+        android:textSize="18dp"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_toEndOf="@+id/textView4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="test"
+        android:id="@+id/distance"
+        android:layout_marginLeft="3dp"
+        android:textSize="18dp"
+        android:layout_alignTop="@+id/textView11"
+        android:layout_toEndOf="@+id/textView11" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="test"
+        android:id="@+id/avgSpeed"
+        android:layout_marginLeft="3dp"
+        android:textSize="18dp"
+        android:layout_alignTop="@+id/textView10"
+        android:layout_toEndOf="@+id/textView10" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="test"
+        android:id="@+id/maxSpeed"
+        android:layout_marginLeft="3dp"
+        android:textSize="18dp"
+        android:layout_alignTop="@+id/textView12"
+        android:layout_toEndOf="@+id/textView12" />
+
+</RelativeLayout>
