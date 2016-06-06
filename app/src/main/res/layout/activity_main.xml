@@ -36,7 +36,8 @@
                 android:textColor="#ffffff"
                 android:onClick="onTracksClicked"
                 android:layout_weight="1"
-                android:layout_marginRight="7.5dp" />
+                android:layout_marginRight="7.5dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -50,7 +51,8 @@
                 android:onClick="onMapClicked"
                 android:layout_weight="1"
                 android:layout_marginLeft="7.5dp"
-                android:gravity="center_vertical" />
+                android:gravity="center_vertical"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,7 +76,8 @@
                 android:textSize="30sp"
                 android:textColor="#ffffff"
                 android:layout_marginRight="7.5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -87,7 +90,8 @@
                 android:textSize="30sp"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="7.5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
@@ -105,13 +109,14 @@
             android:layout_height="match_parent"
             android:text="@string/start_skating"
             android:id="@+id/start_skating_button"
-            android:background="@drawable/save_button_design"
+            android:background="@drawable/search_button_design"
             android:textAlignment="center"
             android:gravity="center_vertical"
             android:textSize="33sp"
             android:textColor="#ffffff"
             android:onClick="onStartClicked"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp" />
+            android:layout_marginRight="15dp"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

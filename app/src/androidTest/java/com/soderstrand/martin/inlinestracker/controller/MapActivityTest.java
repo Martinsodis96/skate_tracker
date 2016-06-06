@@ -30,12 +30,6 @@ public class MapActivityTest extends ActivityInstrumentationTestCase2<MapActivit
         mapActivity = getActivity();
     }
 
-    @Test
-    public void testTextViewNotNull(){
-        TextView type = (TextView) mapActivity.findViewById(R.id.type);
-        assertNotNull(type);
-    }
-
 
     @Test
     public void testEditTextNotNull(){
@@ -47,11 +41,5 @@ public class MapActivityTest extends ActivityInstrumentationTestCase2<MapActivit
     public void testButtonNotNull(){
         Button search = (Button) mapActivity.findViewById(R.id.search);
         assertNotNull(search);
-    }
-
-    @Test
-    public void testSpinnerNotNull(){
-        Spinner spinner = (Spinner) mapActivity.findViewById(R.id.spinner);
-        assertNotNull(spinner);
     }
 }
