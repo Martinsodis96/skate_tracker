@@ -64,6 +64,7 @@ public class Map implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         final LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             alertNoGps();
         }
@@ -79,6 +80,10 @@ public class Map implements OnMapReadyCallback {
             if(points.size() > 0){
                 zoomCamers(points.get(1));
             }
+        }else{
+            LatLng lastKnowPosition = new LatLng(manager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude(),
+                    manager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude());
+            zoomCamers(lastKnowPosition);
         }
     }
 

@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 
 /**
@@ -22,7 +23,6 @@ import com.google.android.gms.maps.model.LatLng;
 public class MyLocationListener implements LocationListener {
 
     private LocationManager locationManager;
-    private String locationProvider;
     private Location location;
     private Track track;
     private Map map;
@@ -63,6 +63,7 @@ public class MyLocationListener implements LocationListener {
         if(startTrack){
             LatLng newLatlng = new LatLng(location.getLatitude(), location.getLongitude());
             track.addPoint(newLatlng);
+            map.zoomCamers(newLatlng);
             if(this.location != null) {
                 LatLng currentLatlng = new LatLng(this.location.getLatitude(), this.location.getLongitude());
                 if(!track.getPoints().contains(currentLatlng)){
@@ -86,15 +87,6 @@ public class MyLocationListener implements LocationListener {
      */
     public void initializeLocationManager() {
         this.locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        //define the criteria
-        Criteria criteria = new Criteria();
-
-        this.locationProvider = locationManager.getBestProvider(criteria, false);
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        this.location = locationManager.getLastKnownLocation(locationProvider);
-
         //initialize the location
         if(location != null) {
             onLocationChanged(location);
@@ -118,10 +110,6 @@ public class MyLocationListener implements LocationListener {
 
     public LocationManager getLocationManager() {
         return locationManager;
-    }
-
-    public String getLocationProvider() {
-        return locationProvider;
     }
 
     public Location getLocation() {

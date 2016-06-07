@@ -3,9 +3,9 @@ package com.soderstrand.martin.inlinestracker.controller;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.SensorManager;
+import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -70,7 +70,8 @@ public class StartSkatingActivity extends FragmentActivity {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        locationListener.getLocationManager().requestLocationUpdates(locationListener.getLocationProvider(), 0, 10, locationListener);
+        locationListener.getLocationManager().requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 10, locationListener);
+        locationListener.getLocationManager().requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 500, 10, locationListener);
         sensor.getSenSensorManager().registerListener(sensor, sensor.getSenAccelerometer(), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
@@ -82,38 +83,15 @@ public class StartSkatingActivity extends FragmentActivity {
     public void onSavePressed(View view){
         new AlertDialog.Builder(this)
                 .setTitle("Save track")
-                .setMessage("Are you sure you want to Save this track?")
+                .setMessage("Are you sure you want to save and end this track?")
                 .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         endAndSave();
                     }
                 })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //Do nothing
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_info)
-                .show();
-    }
-
-    /**
-     * If the delete button is clicked this displays an alert box.
-     *
-     * @param view view
-     */
-    public void onDeletePressed(View view){
-        new AlertDialog.Builder(this)
-                .setTitle("Delete track")
-                .setMessage("Are you sure you want to Delete this track?")
-                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        endWithoutSaving();
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
