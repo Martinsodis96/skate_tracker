@@ -9,6 +9,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.soderstrand.martin.inlinestracker.model.Map;
@@ -30,6 +31,7 @@ public class MyLocationListener implements LocationListener {
     private Map map;
     private Context context;
     private boolean startTrack;
+    public static final String TAG = "MyLocationListener";
 
     /**
      * Call this constructor if you want to load an existing track.
@@ -67,6 +69,7 @@ public class MyLocationListener implements LocationListener {
             track.addPoint(newLatlng);
             if(this.location != null) {
                 LatLng currentLatlng = new LatLng(this.location.getLatitude(), this.location.getLongitude());
+                map.zoomCamers(currentLatlng);
                 if(!track.getPoints().contains(currentLatlng)){
                     track.addPoint(currentLatlng);
                 }
@@ -97,8 +100,10 @@ public class MyLocationListener implements LocationListener {
         }
         this.location = locationManager.getLastKnownLocation(locationProvider);
 
+
         //initialize the location
         if(location != null) {
+            map.zoomCamers(new LatLng(location.getLatitude(), location.getLongitude()));
             onLocationChanged(location);
         }
     }

@@ -3,6 +3,7 @@ package com.soderstrand.martin.inlinestracker.controller;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -79,7 +80,8 @@ public class MapActivity extends FragmentActivity implements AdapterView.OnItemS
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        locationListener.getLocationManager().requestLocationUpdates(locationListener.getLocationProvider(), 10, 0, locationListener);
+        locationListener.getLocationManager().requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
+        locationListener.getLocationManager().requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 10, locationListener);
     }
 
     /**

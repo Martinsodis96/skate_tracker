@@ -27,12 +27,6 @@ public class StartSkatingActivityTest extends ActivityInstrumentationTestCase2<S
         super.setUp();
         startSkatingActivity = getActivity();
     }
-
-    @Test
-    public void testRelativeLayoutNotNull(){
-        RelativeLayout bottom = (RelativeLayout) startSkatingActivity.findViewById(R.id.bottom);
-        assertNotNull(bottom);
-    }
     @Test
     public void testTextViewNotNull(){
         TextView save = (TextView) startSkatingActivity.findViewById(R.id.save_button);

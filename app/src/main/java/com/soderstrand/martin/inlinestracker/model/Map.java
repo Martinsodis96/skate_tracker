@@ -107,7 +107,9 @@ public class Map implements OnMapReadyCallback {
      * @param latlng
      */
     public void zoomCamers(LatLng latlng){
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 16.0f));
+        if(mMap != null){
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 16.0f));
+        }
     }
 
     /**
