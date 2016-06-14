@@ -88,9 +88,9 @@ public class DataBaseHandler extends SQLiteOpenHelper {
      * @param columnIndex The name of the column you want the values from.
      * @return - The values from the database as a Json String.
      */
-    public String getColumn(String columnIndex){
+    public String getColumn(String columnIndex) {
         String date = "";
-        SQLiteDatabase db =  getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_MAPS + " WHERE 1";
         //Cursor point
         Cursor c = db.rawQuery(query, null);
@@ -109,4 +109,11 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return date;
     }
 
+    public Track getTrack(int trackId){
+        return null;
+    }
+
+    public void removeTrack(int track){
+
+    }
 }

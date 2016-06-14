@@ -64,6 +64,22 @@ public class FrontPageActivity extends AppCompatActivity {
         this.overridePendingTransition(R.animator.slide_in_right_fast, R.animator.slide_out_left_fast);
     }
 
+    /**
+     * WHen the "Profile" button is clicked
+     * @param view
+     */
+    public void onProfileClicked(View view){
+        //TODO enter a profile page to manage account
+    }
+
+    /**
+     * WHen the "Settings" button is clicked
+     * @param view
+     */
+    public void onSettingsClicked(View view){
+        //TODO enter a settings page to manage settings
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.gestureDetectorCompat.onTouchEvent(event);

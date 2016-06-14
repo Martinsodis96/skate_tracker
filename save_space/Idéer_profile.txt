@@ -1,0 +1,13 @@
+Personligt bästa: 
+	top hastighet
+	totalt antal tracks
+	Total distans
+	Total tid tränad
+
+Profilbild:
+	lägga till vänner
+	
+
+
+
+

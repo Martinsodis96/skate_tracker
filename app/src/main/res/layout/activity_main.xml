@@ -76,6 +76,7 @@
                 android:textSize="30sp"
                 android:textColor="#ffffff"
                 android:layout_marginRight="7.5dp"
+                android:onClick="onSettingsClicked"
                 android:layout_weight="1"
                 android:textStyle="bold" />
 
@@ -90,6 +91,7 @@
                 android:textSize="30sp"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="7.5dp"
+                android:onClick="onProfileClicked"
                 android:layout_weight="1"
                 android:textStyle="bold" />
         </LinearLayout>
