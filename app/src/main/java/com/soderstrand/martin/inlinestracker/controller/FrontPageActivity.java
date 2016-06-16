@@ -65,15 +65,16 @@ public class FrontPageActivity extends AppCompatActivity {
     }
 
     /**
-     * WHen the "Profile" button is clicked
+     * When the "Profile" button is clicked
      * @param view
      */
     public void onProfileClicked(View view){
-        //TODO enter a profile page to manage account
+        /*Intent profileIntent = new Intent(this, ProfileActivity.class);
+        startActivity(profileIntent);*/
     }
 
     /**
-     * WHen the "Settings" button is clicked
+     * When the "Settings" button is clicked
      * @param view
      */
     public void onSettingsClicked(View view){

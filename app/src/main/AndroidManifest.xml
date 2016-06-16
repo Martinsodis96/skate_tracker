@@ -8,13 +8,13 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
+        android:icon="@drawable/skates"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:icon="@drawable/skates"
         android:theme="@style/AppTheme">
 
         <!--
@@ -32,31 +32,30 @@
         <activity
             android:name=".controller.StartSkatingActivity"
             android:label="@string/title_activity_maps"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".controller.FrontPageActivity"
             android:label="@string/title_activity_maps"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".controller.TracksPageActivity"
-            android:launchMode="singleTask"
             android:label="Tracks"
-            android:screenOrientation="portrait">
-        </activity>
-
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".controller.MapActivity"
             android:label="@string/title_activity_maps"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".controller.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

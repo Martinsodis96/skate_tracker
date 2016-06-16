@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InlinesTracker</string>
+    <string name="app_name">Skate Tracker</string>
     <string name="title_activity_maps">Skate Tracker</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
@@ -24,4 +24,5 @@
     <string name="time">Time:</string>
     <string name="max_speed">Max Speed:</string>
     <string name="avg_speed">Avg speed:</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 </resources>
