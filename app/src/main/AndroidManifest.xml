@@ -32,7 +32,8 @@
         <activity
             android:name=".controller.StartSkatingActivity"
             android:label="@string/title_activity_maps"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".controller.FrontPageActivity"
             android:label="@string/title_activity_maps"
@@ -47,15 +48,17 @@
             android:name=".controller.TracksPageActivity"
             android:label="Tracks"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".controller.MapActivity"
             android:label="@string/title_activity_maps"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".controller.ProfileActivity"
-            android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_profile">
+        </activity>
     </application>
 
 </manifest>

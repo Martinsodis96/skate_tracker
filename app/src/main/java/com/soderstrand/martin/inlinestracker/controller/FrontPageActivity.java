@@ -1,7 +1,10 @@
 package com.soderstrand.martin.inlinestracker.controller;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -21,6 +24,7 @@ import com.soderstrand.martin.inlinestracker.model.Position;
 public class FrontPageActivity extends AppCompatActivity {
 
     private GestureDetectorCompat gestureDetectorCompat;
+    private int MY_PERMISSION_LOCATION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,9 @@ public class FrontPageActivity extends AppCompatActivity {
 
         //For swipe detection.
         gestureDetectorCompat = new GestureDetectorCompat(this, new GestureListener(this, Position.FRONTPAGE));
+
+        ActivityCompat.requestPermissions(FrontPageActivity.this,
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSION_LOCATION);
     }
 
     /**
@@ -69,8 +76,8 @@ public class FrontPageActivity extends AppCompatActivity {
      * @param view
      */
     public void onProfileClicked(View view){
-        /*Intent profileIntent = new Intent(this, ProfileActivity.class);
-        startActivity(profileIntent);*/
+        Intent profileIntent = new Intent(this, ProfileActivity.class);
+        startActivity(profileIntent);
     }
 
     /**
@@ -85,5 +92,17 @@ public class FrontPageActivity extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event) {
         this.gestureDetectorCompat.onTouchEvent(event);
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                }
+                return;
+            }
+        }
     }
 }

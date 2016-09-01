@@ -1,7 +1,9 @@
 package com.soderstrand.martin.inlinestracker.model.listener;
 
 import android.Manifest;
+import android.app.IntentService;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;

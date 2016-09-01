@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.soderstrand.martin.inlinestracker.model.DataBaseHandler;
 import com.soderstrand.martin.inlinestracker.model.Map;
@@ -39,6 +40,7 @@ public class StartSkatingActivity extends FragmentActivity {
     private Track track;
     private MyLocationListener locationListener;
     private SensorListener sensor;
+    GoogleApiClient googleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,7 @@ public class StartSkatingActivity extends FragmentActivity {
         db = new DataBaseHandler(this);
 
         locationListener.initializeLocationManager();
+
         sensor.initialize();
     }
 

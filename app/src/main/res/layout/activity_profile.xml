@@ -9,8 +9,10 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:layout_margin="15dp"
-        android:id="@+id/top_container">
+        android:id="@+id/top_container"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="5dp">
 
         <ImageView
             android:layout_width="140dp"
@@ -29,14 +31,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Name Lastname"
+                android:text="Firstname Lastname"
                 android:id="@+id/full_name" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Username: Test"
+                android:text="Username: FirstName9"
                 android:id="@+id/username"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="20dp" />
@@ -45,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Something else"
+                android:text="Score: 1045"
                 android:id="@+id/something"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="20dp" />
@@ -58,16 +60,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="top|center"
-        android:id="@+id/bottom_container">
+        android:id="@+id/bottom_container"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginBottom="7.5dp"
             android:id="@+id/first_row"
-            android:layout_marginRight="20dp"
             android:gravity="center_horizontal"
             android:layout_marginTop="5dp">
 
@@ -107,7 +109,7 @@
                         android:orientation="horizontal"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="0.9"
                         android:id="@+id/distance_container">
 
                         <TextView
@@ -115,7 +117,7 @@
                             android:layout_height="wrap_content"
                             android:text="Distance:"
                             android:id="@+id/distance_text"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -125,7 +127,7 @@
                             android:text="23.4km"
                             android:id="@+id/distance_value"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -140,7 +142,7 @@
                             android:layout_height="wrap_content"
                             android:text="Speed:"
                             android:id="@+id/speed_text"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -150,7 +152,7 @@
                             android:text="37.2km/h"
                             android:id="@+id/speed_value"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -160,7 +162,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
-                    android:paddingTop="2.5dp"
+                    android:paddingTop="1dp"
                     android:paddingRight="5dp"
                     android:paddingBottom="5dp"
                     android:id="@+id/first_row_information_two">
@@ -169,7 +171,7 @@
                         android:orientation="horizontal"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="0.9"
                         android:id="@+id/time_container">
 
                         <TextView
@@ -177,7 +179,7 @@
                             android:layout_height="wrap_content"
                             android:text="Time:"
                             android:id="@+id/textView9"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -187,7 +189,7 @@
                             android:text="66:22min"
                             android:id="@+id/textView23"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -202,7 +204,7 @@
                             android:layout_height="wrap_content"
                             android:text="Avg speed:"
                             android:id="@+id/textView24"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -212,7 +214,7 @@
                             android:text="19.2km/h"
                             android:id="@+id/textView26"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -223,10 +225,8 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginBottom="7.5dp"
-            android:id="@+id/linearLayout2"
-            android:layout_marginRight="20dp"
+            android:id="@+id/secondRow"
             android:gravity="center_horizontal"
             android:layout_marginTop="5dp" >
 
@@ -263,14 +263,14 @@
                         android:orientation="horizontal"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" >
+                        android:layout_weight="0.9" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Distance:"
                             android:id="@+id/textView2"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -280,7 +280,7 @@
                             android:text="145km"
                             android:id="@+id/textView3"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -294,7 +294,7 @@
                             android:layout_height="wrap_content"
                             android:text="Falls:"
                             android:id="@+id/textView4"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -304,7 +304,7 @@
                             android:text="322"
                             android:id="@+id/textView5"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -313,7 +313,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
-                    android:paddingTop="2.5dp"
+                    android:paddingTop="1dp"
                     android:paddingRight="5dp"
                     android:paddingBottom="5dp" >
 
@@ -321,14 +321,14 @@
                         android:orientation="horizontal"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" >
+                        android:layout_weight="0.9" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Time:"
                             android:id="@+id/textView27"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -338,7 +338,7 @@
                             android:text="78hours"
                             android:id="@+id/textView28"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -352,7 +352,7 @@
                             android:layout_height="wrap_content"
                             android:text="Avg speed:"
                             android:id="@+id/textView29"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -362,7 +362,7 @@
                             android:text="13.2km/h"
                             android:id="@+id/textView30"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -372,10 +372,8 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginBottom="7.5dp"
-            android:id="@+id/linearLayout3"
-            android:layout_marginRight="20dp"
+            android:id="@+id/thirdRow"
             android:gravity="center_horizontal"
             android:layout_marginTop="5dp">
 
@@ -412,14 +410,14 @@
                         android:orientation="horizontal"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" >
+                        android:layout_weight="0.9" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Distance:"
                             android:id="@+id/textView14"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -429,7 +427,7 @@
                             android:text="122km"
                             android:id="@+id/textView15"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -443,7 +441,7 @@
                             android:layout_height="wrap_content"
                             android:text="Falls:"
                             android:id="@+id/textView16"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -453,7 +451,7 @@
                             android:text="27"
                             android:id="@+id/textView17"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -462,7 +460,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
-                    android:paddingTop="2.5dp"
+                    android:paddingTop="1dp"
                     android:paddingRight="5dp"
                     android:paddingBottom="5dp" >
 
@@ -470,14 +468,14 @@
                         android:orientation="horizontal"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" >
+                        android:layout_weight="0.9" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Time:"
                             android:id="@+id/textView18"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -487,7 +485,7 @@
                             android:text="67hours"
                             android:id="@+id/textView19"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -501,7 +499,7 @@
                             android:layout_height="wrap_content"
                             android:text="Avg speed:"
                             android:id="@+id/textView20"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:paddingLeft="0dp" />
 
                         <TextView
@@ -511,7 +509,7 @@
                             android:text="14.5km/h"
                             android:id="@+id/textView21"
                             android:layout_marginLeft="5dp"
-                            android:textSize="18sp" />
+                            android:textSize="17sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

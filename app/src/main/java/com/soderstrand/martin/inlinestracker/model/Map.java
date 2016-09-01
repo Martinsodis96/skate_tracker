@@ -6,18 +6,24 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -25,6 +31,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.soderstrand.martin.inlinestracker.R;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -135,9 +142,11 @@ public class Map implements OnMapReadyCallback {
      * @param description Description about the marker
      */
     public void addMarker(Double latitude, Double longitude, String title, String description){
+        final View marker = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.custom_marker, null);
         mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(latitude, longitude)).title(title)
-                .snippet(description));
+                .snippet(description)
+                .icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(context, marker))));
     }
 
     /**
@@ -206,7 +215,6 @@ public class Map implements OnMapReadyCallback {
         PolylineOptions options = new PolylineOptions().width(6).color(Color.BLUE).geodesic(true);
         for (LatLng l : this.points){
             options.add(l);
-            System.out.println(l);
         }
         line = mMap.addPolyline(options);
     }
@@ -215,11 +223,29 @@ public class Map implements OnMapReadyCallback {
      * places the markers from an old track on the map.
      */
     public void placeMarkers(){
+        final View marker = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.custom_marker, null);
         for (LatLng l : this.markers){
             mMap.addMarker(new MarkerOptions()
                     .position(l).title("Fall")
-                    .snippet("Fall speed:"));
+                    .snippet("Fall speed:")
+                    .icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(context, marker))));
         }
+    }
+
+    // Convert a view to bitmap
+    public static Bitmap createDrawableFromView(Context context, View view) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        view.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
+        view.measure(displayMetrics.widthPixels, displayMetrics.heightPixels);
+        view.layout(0, 0, displayMetrics.widthPixels, displayMetrics.heightPixels);
+        view.buildDrawingCache();
+        Bitmap bitmap = Bitmap.createBitmap(view.getMeasuredWidth(), view.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(bitmap);
+        view.draw(canvas);
+
+        return bitmap;
     }
 
     public void animateCamera(Location location){
