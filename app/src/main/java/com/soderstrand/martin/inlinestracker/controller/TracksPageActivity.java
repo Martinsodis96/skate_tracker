@@ -1,5 +1,8 @@
 package com.soderstrand.martin.inlinestracker.controller;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
@@ -12,9 +15,12 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.soderstrand.martin.inlinestracker.R;
+import com.soderstrand.martin.inlinestracker.model.DataBaseHandler;
+import com.soderstrand.martin.inlinestracker.model.Track;
 import com.soderstrand.martin.inlinestracker.model.listener.GestureListener;
 import com.soderstrand.martin.inlinestracker.model.Position;
-import com.soderstrand.martin.inlinestracker.model.TracksReceiver;
+
+import java.util.ArrayList;
 
 /**
  * @author Martin Söderstrand
@@ -29,25 +35,56 @@ public class TracksPageActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE_MARKERS = "com.soderstrand.martin.inlinestracker.MARKERS";
     public final static String EXTRA_MESSAGE_ACTIVITY = "com.soderstrand.martin.inlinestracker.ACTIVITY";
     private GestureDetectorCompat gestureDetectorCompat;
+    private ArrayList<Track> tracks;
+    private Context context = this;
     ListView martinsListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracks);
-        final TracksReceiver tracks = new TracksReceiver(this);
+        final DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
+        tracks = dataBaseHandler.getAllTracks();
+
         martinsListView = (ListView) findViewById(R.id.tracks_button);
 
-        if(!tracks.getDates()[0].equals("")){
-            ListAdapter adapter = new CustomAdapter(this, tracks.getDates(), tracks.getDistance(), tracks.getAvgSpeed(), tracks.getMaxSpeed(), tracks.getTime());
+        if(!tracks.isEmpty()){
+            ListAdapter adapter = new CustomAdapter(this, tracks);
             martinsListView.setAdapter(adapter);
             martinsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    onOldTrackClicked(position, tracks.getPoints(), tracks.getMarkers());
+                    //onOldTrackClicked(tracks.get(position).getPoints(), tracks.get(position).getMarkers());
+                    //TODO: Make the click on track work again!
                 }
 
 
+            });
+
+            martinsListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    dataBaseHandler.removeTrack(position);
+                    System.out.println("Removed track " + position);
+                   /* final int itemPosition = position;
+                    new AlertDialog.Builder(context)
+                            .setTitle("Delete this track?")
+                            .setMessage("Are you sure you want to Delete track?")
+                            .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dataBaseHandler.removeTrack(itemPosition);
+                                }
+                            })
+                            .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //Do nothing
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_info)
+                            .show();*/
+
+                    return false;
+                }
             });
 
         }else{
@@ -60,18 +97,14 @@ public class TracksPageActivity extends AppCompatActivity {
     }
 
     /**
-     *  If an element in the tracks ListView is clicked.
      *
-     * @param position Position of the clicked element in the listView
-     * @param points String Array of latlng points for lines.
-     * @param markers String Array of latlng points for markers.
+     * @param point
+     * @param marker
      */
-    public void onOldTrackClicked(int position, String[] points, String[] markers){
-        String pointJson = points[position];
-        String markerJson = markers[position];
+    public void onOldTrackClicked(String point, String marker){
         Intent intent = new Intent(this, MapActivity.class);
-        intent.putExtra(EXTRA_MESSAGE_POINTS, pointJson);
-        intent.putExtra(EXTRA_MESSAGE_MARKERS, markerJson);
+        intent.putExtra(EXTRA_MESSAGE_POINTS, point);
+        intent.putExtra(EXTRA_MESSAGE_MARKERS, marker);
         intent.putExtra(EXTRA_MESSAGE_ACTIVITY, "Track");
         startActivity(intent);
     }

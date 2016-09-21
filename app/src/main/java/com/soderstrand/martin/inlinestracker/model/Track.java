@@ -23,7 +23,7 @@ public class Track {
     private double maxSpeed;            //Max speed
     private String time;                //Duration
     private ArrayList<LatLng> points;   //The points to draw lines between
-    private ArrayList<LatLng> markers;  //The markers on the map when you save
+    private ArrayList<LatLng>  markers;  //The markers on the map when you save
 
     /**
      *
@@ -33,7 +33,7 @@ public class Track {
      * //@param maxSpeed - Duration
      * @param time - The points to draw lines between
      */
-    public Track(ArrayList<LatLng> points,ArrayList<LatLng> markers, String date, double distance, double avgSpeed, double maxSpeed, String time){
+    public Track(String date, double distance, double avgSpeed, double maxSpeed, String time, ArrayList<LatLng> points, ArrayList<LatLng> markers){
         this.points = points;
         this.markers = markers;
         this.date = date;
@@ -43,48 +43,42 @@ public class Track {
         this.maxSpeed = maxSpeed;
     }
 
-    /**
-     * Empty constructor.
-     */
     public Track(){
-        this.points = new ArrayList<>();
-        this.markers = new ArrayList<>();
+        points = new ArrayList<>();
+        markers = new ArrayList<>();
+
     }
 
     public ArrayList<LatLng> getMarkers() {
         return markers;
     }
 
+    public void clearMarkers(){
+        markers.clear();
+    }
+
+    public void addMarker(LatLng marker) {
+        markers.add(marker);
+    }
+
     public void setMarkers(ArrayList<LatLng> markers) {
         this.markers = markers;
     }
 
-    public void addMarker(LatLng marker){
-        this.markers.add(marker);
-    }
-
-    public void clearMarkers(){
-        if(markers != null){
-            this.markers.clear();
-        }
+    public void clearPoints(){
+        markers.clear();
     }
 
     public ArrayList<LatLng> getPoints() {
         return points;
     }
 
+    public void addPoint(LatLng marker) {
+        markers.add(marker);
+    }
+
     public void setPoints(ArrayList<LatLng> points) {
         this.points = points;
-    }
-
-    public void addPoint(LatLng point){
-        this.points.add(point);
-    }
-
-    public void clearPoints(){
-        if(points != null){
-            this.points.clear();
-        }
     }
 
     public int getId() {

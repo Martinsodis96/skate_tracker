@@ -6,7 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
 
 /**
  * @author Martin Söderstrand
@@ -18,8 +24,8 @@ import com.google.gson.Gson;
 public class DataBaseHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 9;              // Database Version
-    private static final String DATABASE_NAME = "mapManager";   // Database Name
-    private static final String TABLE_MAPS = "maps";            // Table name
+    private static final String DATABASE_NAME = "track_manager";   // Database Name
+    private static final String TABLE_MAPS = "tracks";            // Table name
 
     // Columns names
     private static final String COLUMN_ID = "id";
@@ -38,15 +44,15 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Create table
-        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_MAPS + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
-                + COLUMN_DATE + " TEXT ,"
-                + COLUMN_DISTANCE + " TEXT ,"
-                + COLUMN_AVGSPEED + " TEXT ,"
-                + COLUMN_MAXSPEED + " TEXT ,"
-                + COLUMN_TIME + " TEXT ,"
-                + COLUMN_LATLNG + " TEXT ,"
-                + COLUMN_MARKERS + " TEXT" +
+        String CREATE_CONTACTS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_MAPS + "("
+                + COLUMN_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_DATE + " VARCHAR(100) NULL,"
+                + COLUMN_DISTANCE + " DOUBLE NULL,"
+                + COLUMN_AVGSPEED + " DOUBLE NULL, "
+                + COLUMN_MAXSPEED + " DOUBLE NULL ,"
+                + COLUMN_TIME + " VARCHAR(100) NULL ,"
+                + COLUMN_LATLNG + " JSON NULL ,"
+                + COLUMN_MARKERS + " JSON NULL" +
                 ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
@@ -83,15 +89,16 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * Get a single column from th table in the database.
      *
-     * @param columnIndex The name of the column you want the values from.
-     * @return - The values from the database as a Json String.
+     * @return
      */
-    public String getColumn(String columnIndex) {
-        String date = "";
+    public ArrayList<Track> getAllTracks() {
+        ArrayList<Track> tracks = new ArrayList<>();
+        ArrayList<LatLng> points = null;
+        ArrayList<LatLng> markers = null;
         SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_MAPS + " WHERE 1";
+        String query = "SELECT * FROM " + TABLE_MAPS;
+
         //Cursor point
         Cursor c = db.rawQuery(query, null);
         //Move to first row
@@ -99,21 +106,67 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
         //While loop to print put every value in the column
         while (!c.isAfterLast()) {
-            if (c.getString(c.getColumnIndex(columnIndex)) != null) {
-                date += c.getString(c.getColumnIndex(columnIndex));
-                date += "\n";
+            if (c.getString(c.getColumnIndex(COLUMN_ID)) != null) {
+
+                try {
+                    points = jsonStringToArray(c.getString(c.getColumnIndex(COLUMN_LATLNG)));
+                    markers = jsonStringToArray(c.getString(c.getColumnIndex(COLUMN_MARKERS)));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Track track = new Track(c.getString(c.getColumnIndex(COLUMN_DATE)),
+                        c.getDouble(c.getColumnIndex(COLUMN_DISTANCE)),
+                        c.getDouble(c.getColumnIndex(COLUMN_AVGSPEED)),
+                        c.getDouble(c.getColumnIndex(COLUMN_MAXSPEED)),
+                        c.getString(c.getColumnIndex(COLUMN_TIME)),
+                        points,
+                        markers
+                        );
+
+                tracks.add(track);
             }
             c.moveToNext();
         }
         db.close();
-        return date;
+        return tracks;
     }
 
-    public Track getTrack(int trackId){
-        return null;
+    private ArrayList<LatLng> jsonStringToArray(String jsonString) throws JSONException {
+
+        ArrayList<LatLng> stringArray = new ArrayList<>();
+
+        JSONArray jsonArray = new JSONArray(jsonString);
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            String[] latLngString =  jsonArray.getString(i).split(",");
+            String[] lat =  latLngString[0].split(":");
+            String[] lng =  latLngString[1].split(":");
+            double latitude = Double.parseDouble(lat[1]);
+            double longitude = Double.parseDouble(lng[1]);
+            LatLng latLng = new LatLng(latitude, longitude);
+
+            stringArray.add(latLng);
+        }
+
+        return stringArray;
+    }
+
+    public String getTrack(){
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_MAPS + " WHERE 1";
+        Cursor c = db.rawQuery(query, null);
+        //Move to first row
+        c.moveToFirst();
+
+        db.close();
+        return query;
     }
 
     public void removeTrack(int track){
-
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "DELETE FROM " + TABLE_MAPS + " WHERE " + COLUMN_ID + " = " + track + 1;
+        db.execSQL(query);
+        db.close();
     }
 }

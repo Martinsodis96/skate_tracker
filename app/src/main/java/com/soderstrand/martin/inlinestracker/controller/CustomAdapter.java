@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.soderstrand.martin.inlinestracker.R;
+import com.soderstrand.martin.inlinestracker.model.Track;
+
+import java.util.ArrayList;
 
 /**
  * @author  Martin Söderstrand
@@ -16,18 +19,11 @@ import com.soderstrand.martin.inlinestracker.R;
  *
  * A custom layout for each element in a ListView.
  */
-class CustomAdapter extends ArrayAdapter<String> {
-
-    private final String[] distance;
-    private final String[] avgSpeed;
-    private final String[] maxSpeed;
-    private final String[] time;
-    public CustomAdapter(Context context, String[] date, String[] distance, String[] avgSpeed, String[] maxSpeed, String[] time) {
-        super(context, R.layout.activity_custom_row, date);
-        this.distance = distance;
-        this.avgSpeed = avgSpeed;
-        this.maxSpeed = maxSpeed;
-        this.time = time;
+class CustomAdapter extends ArrayAdapter<Track> {
+    private ArrayList<Track> tracks;
+    public CustomAdapter(Context context, ArrayList<Track> tracks) {
+        super(context, R.layout.activity_custom_row, tracks);
+        this.tracks=tracks;
     }
 
     @Override
@@ -35,31 +31,32 @@ class CustomAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View customView = inflater.inflate(R.layout.activity_custom_row, parent, false);
 
-        //Get single values for each row
-        String singleDate = getItem(position);
-        String singleDistance;
-        String singleAvgSpeed;
-        String singleMaxSpeed;
-
-        //try if the have a value
-        try{
-            singleDistance = String.format("%2.02f", Double.valueOf(distance[position])) + "km";
-            singleAvgSpeed = String.format("%2.01f", Double.valueOf(avgSpeed[position])) + "km/h";
-            singleMaxSpeed = String.format("%2.01f", Double.valueOf(maxSpeed[position])) + "km/h";
-        }catch (Exception e){
-            singleDistance = "0,00km";
-            singleAvgSpeed = "0,0km/h";
-            singleMaxSpeed = "0,0km/h";
-        }
-
-        String singleTime = time[position];
-
         //Initialize
         TextView header = (TextView) customView.findViewById(R.id.date);
         TextView distance = (TextView) customView.findViewById(R.id.distance_value);
         TextView avgSpeed = (TextView) customView.findViewById(R.id.avg_speed_value);
         TextView maxSpeed = (TextView) customView.findViewById(R.id.max_speed_value);
         TextView time = (TextView) customView.findViewById(R.id.time_value);
+
+
+        //Get single values for each row
+        String singleDate = tracks.get(position).getDate();
+        String singleTime = tracks.get(position).getTime();
+        String singleDistance;
+        String singleAvgSpeed;
+        String singleMaxSpeed;
+
+        //try if the have a value
+        try{
+            singleDistance = String.format("%2.02f", tracks.get(position).getDistance()) +"km/h" ;
+            singleAvgSpeed = String.format("%2.01f", tracks.get(position).getAvgSpeed()) + "km/h";
+            singleMaxSpeed = String.format("%2.01f", tracks.get(position).getMaxSpeed()) + "km/h";
+        }catch (Exception e){
+            e.printStackTrace();
+            singleDistance = "0,00km";
+            singleAvgSpeed = "0,0km/h";
+            singleMaxSpeed = "0,0km/h";
+        }
 
         //Set Text
         header.setText(singleDate);

@@ -40,7 +40,6 @@ public class StartSkatingActivity extends FragmentActivity {
     private Track track;
     private MyLocationListener locationListener;
     private SensorListener sensor;
-    GoogleApiClient googleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
